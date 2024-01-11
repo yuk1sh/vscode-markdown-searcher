@@ -2,8 +2,6 @@ import * as vscode from 'vscode';
 import { workspace, window } from 'vscode'; // Add this line
 import matter from 'gray-matter';
 import path from 'path';
-import { debug } from 'console';
-import { debuglog } from 'util';
 
 /* Global variables */
 
