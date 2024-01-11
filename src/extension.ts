@@ -2,6 +2,8 @@ import * as vscode from 'vscode';
 import { workspace, window } from 'vscode'; // Add this line
 import matter from 'gray-matter';
 import path from 'path';
+import { debug } from 'console';
+import { debuglog } from 'util';
 
 /* Global variables */
 
@@ -18,13 +20,16 @@ async function searchFilesByTags(tags: string[]) {
   for (const file of files) {
     const document = await workspace.openTextDocument(file);
     const { data } = matter(document.getText());
-    const fileTags = data.tags;
+    var fileTags = data.tags;
 
 		let dir = "";
 		if (workspace.workspaceFolders !== undefined) {
 			dir = workspace.workspaceFolders[0].uri.path ;
 		}
-    if (fileTags && tags.every(tag => fileTags.includes(tag))) {
+		if (typeof(fileTags) === 'string') {
+			fileTags = [fileTags];
+		}
+    if (fileTags && tags.every((tag) => fileTags.includes(tag))) {
       matchedFiles.push(path.relative(dir, file.path));
     }
   }
