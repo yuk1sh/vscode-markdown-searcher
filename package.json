@@ -5,6 +5,7 @@
   "repository": "git@github.com:yuk1sh/vscode-markdown-searcher.git",
   "author": "yuk1sh",
   "license": "MIT",
+  "publisher": "yuk1sh",
   "version": "1.0.0",
   "engines": {
     "vscode": "^1.85.0"
